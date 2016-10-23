@@ -17,9 +17,13 @@ export default class Weekdays extends Component {
         <Text>
           Days of the week:
         </Text>
-        <DayItem day={DAYS[0]} />
+        {this.days()}
       </View>
     );
+}
+
+  days() {
+    return DAYS.map((day) => { return <DayItem day={day} /> })
   }
 }
 
