@@ -6,10 +6,8 @@ import {
   View
 } from 'react-native'
 import Moment from 'moment'
-
 import DayItem from './src/DayItem'
 
-const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export default class Weekdays extends Component {
   render() {
@@ -18,10 +16,19 @@ export default class Weekdays extends Component {
         {this.days()}
       </View>
     );
-}
+  }
 
   days() {
-    return DAYS.map((day) => { return <DayItem day={day} /> })
+    let daysItems = []
+
+    for(var i = 0; i < 7; i++) {
+      var day = Moment().add(i, 'days').format('dddd')
+      daysItems.push(
+        <DayItem day={day} daysUntil={i} />
+      )
+    }
+
+    return daysItems
   }
 }
 
